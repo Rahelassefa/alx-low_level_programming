@@ -1,2 +1,2 @@
-#!/bin/bash
-void puts(“Programming is like building a multilingual puzzle\n”);
+#include <stdio.h>
+void puts(“Programming is like building a multilingual puzzle”);
