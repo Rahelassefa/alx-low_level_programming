@@ -1,3 +1,4 @@
+carrie@ubuntu:/debugging$ cat 0-main.c
 #include "main.h"
 
 /**
@@ -14,3 +15,4 @@ int main(void)
 
 	return (0);
 }
+carrie@ubuntu:/debugging$
