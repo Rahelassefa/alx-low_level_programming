@@ -1,23 +1,26 @@
-#include <stdio.h>
+#include "holberton.h"
 
 /**
- * main - prints largest prime factor.
+ * main - main function.
+ *
+ * Description: This program finds and prints the largest prime
+ * factor of the number 612852475143.
  * Return: Always 0.
  */
 
 int main(void)
 {
-	long int n, fp;
+	long num = 612852475143;
+	long fac;
 
-	n = 612852475143;
-	for (fp = 2; fp <= n; fp++)
+	for (fac = 2; num > fac; fac++)
 	{
-		if (n % fp == 0)
+		while (num % fac == 0)
 		{
-			n /= fp;
-			fp--;
+			num = num / fac;
 		}
 	}
-	printf("%ld\n", fp);
+	printf("%ld\n", fac);
+
 	return (0);
 }
