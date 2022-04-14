@@ -1,26 +1,30 @@
-#include "main.h"
+#include <stdio.h>
 
 /**
- * main - main function.
+ * main - prints the largest prime factor of the number 612852475143
  *
- * Description: This program finds and prints the largest prime
- * factor of the number 612852475143.
- * Return: Always 0.
+ * Return: Always 0
  */
 
 int main(void)
 {
-	long num = 612852475143;
-	long fac;
+	long int prime = 612852475143;
+	long int quotient = prime;
+	long int divisor = 2;
 
-	for (fac = 2; num > fac; fac++)
+	while (quotient != divisor)
 	{
-		while (num % fac == 0)
+		if (quotient % divisor == 0)
 		{
-			num = num / fac;
+			quotient = quotient / divisor;
+		}
+		else
+		{
+			divisor++;
 		}
 	}
-	printf("%ld\n", fac);
+
+	printf("%li\n", quotient);
 
 	return (0);
 }
