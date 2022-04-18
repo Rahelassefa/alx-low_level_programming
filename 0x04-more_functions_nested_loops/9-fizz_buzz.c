@@ -1,13 +1,13 @@
-#include "main.h"
 #include <stdio.h>
-
 /**
- * main - prints Buzz each numbers of 3 and 5.
- * Return: Always 0.
+ * main - entry point
+ *
+ * Return: void
  */
 
 int main(void)
 {
+<<<<<<< HEAD
 	int n;
 
 
@@ -37,4 +37,43 @@ int main(void)
 
 
 	return (0);
+=======
+
+int p = 100;
+int i;
+
+i = 1;
+while (i <= p)
+{
+if (i % 3 == 0 && i % 5 == 0)
+{
+printf("FizzBuzz ");
+}
+
+else if (i % 3 == 0)
+{
+printf("Fizz ");
+}
+
+else if (i % 5 == 0)
+{
+if (i < p)
+printf("Buzz ");
+
+else
+printf("Buzz");
+}
+
+else
+{
+printf("%i ", i);
+}
+
+i++;
+
+
+}
+printf("\n");
+return (0);
+>>>>>>> 93f1bcc8dad6204fb4a1c4fa14382ed5e6e8b956
 }
