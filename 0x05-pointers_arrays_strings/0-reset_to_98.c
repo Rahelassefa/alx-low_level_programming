@@ -1,12 +1,8 @@
 #include "main.h"
-
 /**
- * reset_to_98 - Reset the variable sent to the function at 98
- * @n: Pointer to the integer sent to the function
- *
- * Return: Nothing
-*/
-
+  * reset_to_98 - updates value to 98
+  * @n: takes in an integer
+  */
 void reset_to_98(int *n)
 {
 	*n = 98;
