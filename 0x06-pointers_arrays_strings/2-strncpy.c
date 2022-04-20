@@ -1,23 +1,28 @@
 #include "main.h"
-
+#define NULL 0
 /**
- * _strcmp - compares two strings
- * @s1: first string to compare
- * @s2: second string to compare
- *
- * Return: less than 0 if s1 is less than s2, 0 if they're equal,
- * more than 0 if s1 is greater than s2
+ * _strchr - locates a character in a string
+ * @s: string
+ * @c: character to search
+ * Return: pointer to first occurrence of c
  */
-int _strcmp(char *s1, char *s2)
+
+char *_strncpy(char *dest, char *src, int n);
 {
-	while (*s1 == *s2)
+	int i = 0;
+
+	while (*(s + i) != '\0')
 	{
-		if (*s1 == '\0')
+		if (*(s + i) == c)
 		{
-			return (0);
+			return (s + i);
 		}
-		s1++;
-		s2++;
+
+		i++;
 	}
-	return (*s1 - *s2);
+	if (c == '\0')
+	{
+		return (s + i);
+	}
+	return (NULL);
 }
