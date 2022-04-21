@@ -1,35 +1,24 @@
-#include "holberton.h"
-
+#include "main.h"
 /**
- * *_strspn - gets the length of a prefix substring
- * @s: string to evaluate
- * @accept: string containing the list of characters to match in s
- *
- * Return: the number of bytes in the initial segment
- * of s which consist only of bytes from accept
+ *_strcmp - compares two strings
+ *@s1: A pointer to a character that will be changed
+ *@s2: A pointer to a character that will also be changed/modified/updated
+ *Return: dest
  */
-unsigned int _strcmp(char *s, char *accept)
+
+int _strcmp(char *s1, char *s2)
+
 {
-	int i, j, f, flag;
 
-	f = 0;
+char *str_one = s1;
+char *str_two = s2;
 
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		flag = 0;
-		for (j = 0; accept[j] != '\0'; j++)
-		{
-			if (s[i] == accept[j])
-			{
-				f++;
-				flag = 1;
-			}
-		}
-		if (flag == 0)
-		{
-			return (f);
-		}
-	}
 
-	return (0);
+while (*str_one != '\0' && *str_two != '\0' && *str_one == *str_two)
+{
+str_one++;
+str_two++;
+}
+
+return (*str_one - *str_two);
 }
