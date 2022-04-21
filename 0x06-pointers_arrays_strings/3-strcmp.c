@@ -1,23 +1,35 @@
-#include "main.h"
-/**
- * _strcmp - compare string values
- * @s1: input value
- * @s2: input value
- *
- * Return: s1[i] - s2[i]
- */
-int _strcmp(char *s1, char *s2)
-{
-	int i;
+#include "holberton.h"
 
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0')
+/**
+ * *_strspn - gets the length of a prefix substring
+ * @s: string to evaluate
+ * @accept: string containing the list of characters to match in s
+ *
+ * Return: the number of bytes in the initial segment
+ * of s which consist only of bytes from accept
+ */
+unsigned int _strcmp(char *s, char *accept)
+{
+	int i, j, f, flag;
+
+	f = 0;
+
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (s1[i] != s2[i])
+		flag = 0;
+		for (j = 0; accept[j] != '\0'; j++)
 		{
-			return (s1[i] - s2[i]);
+			if (s[i] == accept[j])
+			{
+				f++;
+				flag = 1;
+			}
 		}
-		i++;
+		if (flag == 0)
+		{
+			return (f);
+		}
 	}
+
 	return (0);
 }
