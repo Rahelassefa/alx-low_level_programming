@@ -1,109 +1,49 @@
 #include "main.h"
 
-int bandersnatch(char *s1, char *s2);
-char *move(char *s2);
+int check_pal(char *s, int i, int len);
+int _strlen_recursion(char *s);
 
 /**
- * wildcmp - compares two strings recursively,
- * checking for wildcards expansion
- * @s1: first string to compare
- * @s2: second string to compare
+ * is_palindrome - checks if a string is a palindrome
+ * @s: string to reverse
  *
- * Return: 1 if the strings can be considered identical
- * otherwise 0
+ * Return: 1 if it is, 0 it's not
  */
-int wildcmp(char *s1, char *s2)
+int is_palindrome(char *s)
 {
-	/**
-	 * this is going to be a sum of return values
-	 */
-	int sum = 0;
-
-	/**
-	 * if we reach the end of s1 and the char in s2 is a *
-	 * and if the next chars of s2 are *, return 1
-	 */
-	if (*s1 == '\0' && *s2 == '*' && !*move(s2))
+	if (*s == 0)
 		return (1);
-
-	/**
-	 * if the chars are equal in both strings,
-	 * if we reached the end of s1, return 1
-	 * else increment s1 and s2 by 1
-	 */
-	if (*s1 == *s2)
-	{
-		if (*s1 == '\0')
-			return (1);
-		return (wildcmp(s1 + 1, s2 + 1));
-	}
-	/**
-	 * if we reached the end of both strings,
-	 * return 0
-	 */
-	if (*s1 == '\0' || *s2 == '\0')
-		return (0);
-
-	/**
-	 * if the char in s2 is a *
-	 * finds the address of the first char after the *
-	 * if we reached the end of s2, return 1
-	 * if the chars are equal, add the return values
-	 * of wildcmp() to sum
-	 * add the return value of bandersnatch() to sum
-	 * convert non-zero to 1, keeps 0 at 0, return
-	 */
-	if (*s2 == '*')
-	{
-		s2 = move(s2);
-		if (*s2 == '\0')
-			return (1);
-		if (*s1 == *s2)
-			sum += wildcmp(s1 + 1, s2 + 1);
-		sum += bandersnatch(s1 + 1, s2);
-		return (!!sum);
-	}
-	return (0);
+	return (check_pal(s, 0, _strlen_recursion(s)));
 }
 
 /**
- * bandersnatch - checks recursively for all the paths when the
- * characters are equal
- * @s1: first string
- * @s2: second string
+ * _strlen_recursion - returns the length of a string
+ * @s: string to calculate the length of
  *
- * Return: return value of wildcmp() or of itself
+ * Return: length of the string
  */
-int bandersnatch(char *s1, char *s2)
+int _strlen_recursion(char *s)
 {
-	/**
-	 * if we reached the end of s1, return 0
-	 * if chars are equal, return the return value of wildcmp()
-	 * increment s1 by 1, not s2
-	 */
-	if (*s1 == '\0')
+	if (*s == '\0')
 		return (0);
-	if (*s1 == *s2)
-		return (wildcmp(s1, s2));
-	return (bandersnatch(s1 + 1, s2));
+	return (1 + _strlen_recursion(s + 1));
 }
 
 /**
- * *move - moves the current char past the *
- * @s2: string to iterate over
+ * check_pal - checks the characters recursively for palindrome
+ * @s: string to check
+ * @i: iterator
+ * @len: length of the string
  *
- * Return: the address of the character after the *
+ * Return: 1 if palindrome, 0 if not
  */
-char *move(char *s2)
+int check_pal(char *s, int i, int len)
 {
-	/**
-	 * if the current char is a *
-	 * increment s2 by 1
-	 * else return the address of
-	 * the first char past all *
-	 */
-	if (*s2 == '*')
-		return (move(s2 + 1));
-	else
-		return (s2);
+	if (*(s + i) != *(s + len - 1))
+		return (0);
+	if (i >= len)
+		return (1);
+	return (check_pal(s, i + 1, len - 1));
 }
+
+	
